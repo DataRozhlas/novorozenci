@@ -99,6 +99,9 @@ $( function () {
                     });
 
     function loadNameData(name, series) {
+        if (name == "") {
+            return
+        }
         name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
         if (series === 1) {
             shownName1 = name;
@@ -129,8 +132,8 @@ $( function () {
                         };
                     });
                     if (series === 1) {
-                        $("#median1info").text("Žijících nositelů/ek jména " + name + " bylo k roku 2016 celkem " + median_array.length
-                            + ". Mediánový/á " + name + " se narodil/a v roce " + median_array[Math.round(median_array.length/2)-1] + ".");
+                        $("#median1info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name 
+                            + ". Medián jejich let narození je " + median_array[Math.round(median_array.length/2)-1] + ".");
                         
                         if (appchart.series.length != 0) {
                             appchart.get("name1").remove();
@@ -144,8 +147,8 @@ $( function () {
                         });
 
                     } else if (series === 2) {
-                        $("#median2info").text("Žijících nositelů/ek jména " + name + " bylo k roku 2016 celkem " + median_array.length
-                            + ". Mediánový/á " + name + " se narodil/a v roce " + median_array[Math.round(median_array.length/2)-1] + ".");
+                        $("#median2info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name 
+                            + ". Medián jejich let narození je " + median_array[Math.round(median_array.length/2)-1] + ".");
 
                         if (appchart.series.length === 2) {
                             appchart.get("name2").remove();

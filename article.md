@@ -6,7 +6,7 @@ coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
 libraries: [jquery, "https://code.highcharts.com/highcharts.js"]
-options: "noheader"
+options: ""
 ---
 <div class="ui-widget">
   <label for="name1">Jméno: </label>
@@ -14,9 +14,9 @@ options: "noheader"
   <label for="name2">Jméno 2: </label>
   <input id="name2" class="nameac">
 </div>
-<div id="median1info"></div>
-<div id="median2info"></div>
 <div id="appchart"></div>
+<div id="median1info" class="medianinfo"></div>
+<div id="median2info" class="medianinfo"></div>
 
 test mobilního autocomplete 
 

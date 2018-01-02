@@ -5,3 +5,11 @@
 .wronginput {
     background-color: pink;
 }
+
+.medianinfo {
+    font-size: small;
+}
+
+#median2info {
+    padding-bottom: 5vh;
+}
