@@ -1398,7 +1398,7 @@ var widgetsMenu = $.widget( "ui.menu", {
 			"mousedown .ui-menu-item": function( event ) {
 				event.preventDefault();
 			},
-			"click .ui-menu-item": function( event ) {
+			"click touchstart .ui-menu-item": function( event ) {
 				var target = $( event.target );
 				var active = $( $.ui.safeActiveElement( this.document[ 0 ] ) );
 				if ( !this.mouseHandled && target.not( ".ui-state-disabled" ).length ) {
