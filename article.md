@@ -6,7 +6,7 @@ coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
 libraries: [jquery, "https://code.highcharts.com/highcharts.js"]
-options: ""
+options: "noheader"
 ---
 <div class="ui-widget">
   <label for="name1">Jméno: </label>
