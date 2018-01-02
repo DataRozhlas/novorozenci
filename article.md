@@ -9,7 +9,7 @@ libraries: [jquery, "https://code.highcharts.com/highcharts.js"]
 options: ""
 ---
 <div class="ui-widget">
-  <label for="name1">Jméno: </label>
+  <label for="name1">Jméno 1: </label>
   <input id="name1" class="nameac">
   <label for="name2">Jméno 2: </label>
   <input id="name2" class="nameac">
