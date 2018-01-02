@@ -3,7 +3,7 @@
 "use strict";
 $( function () {
     $(".nameac").click(function() {
-        $(this).val('');
+        $(this).val("");
     });
 
     $(".nameac").autocomplete({
@@ -18,23 +18,23 @@ $( function () {
     };
 
     //initial chart load
-    $("#name1").val("Vojtěch")
-    $("#name2").val("")
-    loadNameData("Vojtěch", 1)
+    $("#name1").val("Vojtěch");
+    $("#name2").val("");
+    loadNameData("Vojtěch", 1);
 
     // choosing name 1 - two options
     var shownName1;
     $(".ui-menu").click(function () {
         if (shownName1 != $("#name1").val()) {
-            loadNameData($("#name1").val(), 1)
+            loadNameData($("#name1").val(), 1);
         }
     });
 
     var timeoutID1 = 0;
     $("#name1").on("input", function () {
-        window.clearTimeout(timeoutID1)
+        window.clearTimeout(timeoutID1);
         timeoutID1 = window.setTimeout( function () {
-            loadNameData($("#name1").val(), 1)
+            loadNameData($("#name1").val(), 1);
         }, 500);
     });
     //keyboard doesnt work
@@ -43,15 +43,15 @@ $( function () {
     var shownName2;
     $(".ui-menu").click(function () {
         if (shownName2 != $("#name2").val()) {
-            loadNameData($("#name2").val(), 2)
+            loadNameData($("#name2").val(), 2);
         }
     });
 
     var timeoutID2 = 0;
     $("#name2").on("input", function () {
-        window.clearTimeout(timeoutID2)
+        window.clearTimeout(timeoutID2);
         timeoutID2 = window.setTimeout( function () {
-            loadNameData($("#name2").val(), 2)
+            loadNameData($("#name2").val(), 2);
         }, 500);
     });
 
@@ -60,7 +60,7 @@ $( function () {
         years.push(year);
     };
 
-    var appchart = Highcharts.chart('appchart', {
+    var appchart = Highcharts.chart("appchart", {
                         chart: {
                             height: 300
                         },
@@ -82,7 +82,7 @@ $( function () {
                         yAxis: {
                             min: 0,
                             title: {
-                                text: 'Počet narozených'
+                                text: "Počet narozených"
                             }
                         },
                         plotOptions: {
@@ -91,7 +91,7 @@ $( function () {
                                 borderWidth: 0,
                                 events: {
                                     legendItemClick: function () {
-                                        return false; 
+                                        return false;
                                     }
                                 }
                             }
@@ -121,7 +121,7 @@ $( function () {
 
                 if (response["Items"].length === 0) {
                     $(boxid).addClass("wronginput");
-                } else {    
+                } else {
                     $(boxid).removeClass("wronginput");
                     var data = [];
                     var median_array = [];
@@ -132,7 +132,7 @@ $( function () {
                         };
                     });
                     if (series === 1) {
-                        $("#median1info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name 
+                        $("#median1info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name
                             + ". Medián jejich let narození je " + median_array[Math.round(median_array.length/2)-1] + ".");
                         
                         if (appchart.series.length != 0) {
@@ -147,7 +147,7 @@ $( function () {
                         });
 
                     } else if (series === 2) {
-                        $("#median2info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name 
+                        $("#median2info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name
                             + ". Medián jejich let narození je " + median_array[Math.round(median_array.length/2)-1] + ".");
 
                         if (appchart.series.length === 2) {

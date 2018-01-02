@@ -1,5 +1,5 @@
-title: "Jména: appka, nejstarší a tak"
-perex: "Zajímavosti o jménech."
+title: "Z Lilien je hvězda, Lída se vrací na výsluní, Ivan patří minulosti. A jak staré je vaše jméno?"
+perex: "Podle nejčerstvějších dat mají Češi 69 537 různých křestních jmen. Jejich oblíbenost kolísá s aktuální módou i dobovými poměry. Podle jména tak lze odhadnout i to, jak je jeho nositel starý. Která jména jsou neotřelou novinkou a která patří do historie? A jak daleko máte k průměrnému nositeli svého jména vy?"
 authors: ["Michal Zlatkovský"]
 published: "3. ledna 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
@@ -8,6 +8,9 @@ styles: []
 libraries: [jquery, "https://code.highcharts.com/highcharts.js"]
 options: ""
 ---
+
+Četnost a tak dál si můžete vyzkoušet v naší srovnávací aplikaci.
+
 <div class="ui-widget">
   <label for="name1">Jméno 1: </label>
   <input id="name1" class="nameac">
