@@ -3,7 +3,8 @@ import csv
 single_names = []
 
 names_ignore = ["SOUČET", "NEZJIŠTĚNO", "NEUVEDENO", "NEURČENO"]
-#basic filter
+
+#names for autocomplete
 with open('data.csv') as file:
 	reader = csv.DictReader(file)
 	for row in reader:

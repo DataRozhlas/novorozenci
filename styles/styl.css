@@ -1,3 +1,7 @@
-/*
-CSS soubory ve složce /styles/ se do výsledného článku zakompilují automaticky
-*/
+#name {
+    background-color: none;
+}
+
+.wronginput {
+    background-color: pink;
+}
