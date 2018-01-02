@@ -13,4 +13,6 @@ options: "" #wide, noheader (+nopic)
   <input id="tags">
 </div>
  
+test mobilního autocomplete 
+
 Autocomplete: nedvojjména s výskytem 5+, bez Součet, Nezjištěno, Neurčeno, Neuvedeno
