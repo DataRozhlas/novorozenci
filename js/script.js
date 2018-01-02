@@ -28,10 +28,16 @@ $( function () {
                 } else {    
                     var data = [];
                     var years = [];
+                    var median_array = [];
+
                     for (var year = 1916; year <= 2016; year++) {
                         data.push(response["Items"][0][year]);
                         years.push(year);
+                        for (var i = response["Items"][0][year]; i > 0; i--) {
+                            median_array.push(year)
+                        };
                     };
+                    $("#medianinfo").text("Mediánový/á " + $("#name").val() + " se narodil/a v roce " + median_array[Math.round(median_array.length/2)] + ".");
 
                     var chart = Highcharts.chart('chart', {
                         chart: {

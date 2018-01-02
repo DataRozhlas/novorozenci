@@ -12,9 +12,10 @@ options: ""
   <label for="name">Jméno: </label>
   <input id="name">
 </div>
+<div id="medianinfo"></div>
 <div id="chart"></div>
 <a id="testint">Otestuj interakci</a>
- 
+
 test mobilního autocomplete 
 
 k 2016 celkem 1064 jmen se 100 a více žijícími nositeli
