@@ -2,11 +2,13 @@
 /*global $ availableTags console */
 "use strict";
 $( function () {
-    //$("#name").val("");
+    $(".nameac").click(function() {
+        $(this).val('');
+    });
 
-    $("#name").autocomplete({
+    $(".nameac").autocomplete({
         source: availableTags,
-        minLength: 3
+        minLength: 2
     });
 
     $.ui.autocomplete.filter = function (array, term) {
@@ -15,37 +17,58 @@ $( function () {
         });
     };
 
-    $("#testint").click(function () {
-        $.ajax({
-            url: "https://5mw39ochkf.execute-api.eu-central-1.amazonaws.com/prod/novorozenci",
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({"name": $("#name").val().toUpperCase()}),
-            dataType: "json",
-            success: function success(response) {
-                if (response["Items"].length === 0) {
-                    $("#name").addClass("wronginput");
-                } else {    
-                    var data = [];
-                    var years = [];
-                    var median_array = [];
+    //initial chart load
+    $("#name1").val("Vojtěch")
+    $("#name2").val("")
+    loadNameData("Vojtěch", 1)
 
-                    for (var year = 1916; year <= 2016; year++) {
-                        data.push(response["Items"][0][year]);
-                        years.push(year);
-                        for (var i = response["Items"][0][year]; i > 0; i--) {
-                            median_array.push(year)
-                        };
-                    };
-                    $("#medianinfo").text("Mediánový/á " + $("#name").val() + " se narodil/a v roce " + median_array[Math.round(median_array.length/2)] + ".");
+    // choosing name 1 - two options
+    var shownName1;
+    $(".ui-menu").click(function () {
+        if (shownName1 != $("#name1").val()) {
+            loadNameData($("#name1").val(), 1)
+        }
+    });
 
-                    var chart = Highcharts.chart('chart', {
+    var timeoutID1 = 0;
+    $("#name1").on("input", function () {
+        window.clearTimeout(timeoutID1)
+        timeoutID1 = window.setTimeout( function () {
+            loadNameData($("#name1").val(), 1)
+        }, 500);
+    });
+    //keyboard doesnt work
+
+    // choosing name 2
+    var shownName2;
+    $(".ui-menu").click(function () {
+        if (shownName2 != $("#name2").val()) {
+            loadNameData($("#name2").val(), 2)
+        }
+    });
+
+    var timeoutID2 = 0;
+    $("#name2").on("input", function () {
+        window.clearTimeout(timeoutID2)
+        timeoutID2 = window.setTimeout( function () {
+            loadNameData($("#name2").val(), 2)
+        }, 500);
+    });
+
+    var years = [];
+    for (var year = 1916; year <= 2016; year++) {
+        years.push(year);
+    };
+
+    var appchart = Highcharts.chart('appchart', {
                         chart: {
-                            type: 'column',
-                            height: 400
+                            height: 300
                         },
                         title: {
                             text: null
+                        },
+                        tooltip: {
+                            shared: true
                         },
                         xAxis: {
                             crosshair: true
@@ -63,7 +86,6 @@ $( function () {
                             }
                         },
                         plotOptions: {
-
                             column: {
                                 pointPadding: 0.1,
                                 borderWidth: 0,
@@ -73,18 +95,71 @@ $( function () {
                                     }
                                 }
                             }
-                        },
-                        series: [{
-                            name: 'Narozených',
-                            data: data
-                        }]
+                        }
                     });
+
+    function loadNameData(name, series) {
+        name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        if (series === 1) {
+            shownName1 = name;
+            var boxid = "#name1"
+        } else if (series === 2) {
+            shownName2 = name;
+            var boxid = "#name2"
+        }
+
+        $.ajax({
+            url: "https://5mw39ochkf.execute-api.eu-central-1.amazonaws.com/prod/novorozenci",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({"name": name.toUpperCase()}),
+            dataType: "json",
+            success: function success(response) {
+
+                if (response["Items"].length === 0) {
+                    $(boxid).addClass("wronginput");
+                } else {    
+                    $(boxid).removeClass("wronginput");
+                    var data = [];
+                    var median_array = [];
+                    years.forEach(function(year) {
+                        data.push(response["Items"][0][year]);
+                        for (var i = response["Items"][0][year]; i > 0; i--) {
+                            median_array.push(year)
+                        };
+                    });
+                    if (series === 1) {
+                        $("#median1info").text("Žijících nositelů/ek jména " + name + " bylo k roku 2016 celkem " + median_array.length
+                            + ". Mediánový/á " + name + " se narodil/a v roce " + median_array[Math.round(median_array.length/2)-1] + ".");
+                        
+                        if (appchart.series.length != 0) {
+                            appchart.get("name1").remove();
+                        }
+
+                        appchart.addSeries({
+                            type: "column",
+                            name: name,
+                            data: data,
+                            id: "name1"
+                        });
+
+                    } else if (series === 2) {
+                        $("#median2info").text("Žijících nositelů/ek jména " + name + " bylo k roku 2016 celkem " + median_array.length
+                            + ". Mediánový/á " + name + " se narodil/a v roce " + median_array[Math.round(median_array.length/2)-1] + ".");
+
+                        if (appchart.series.length === 2) {
+                            appchart.get("name2").remove();
+                        }
+
+                        appchart.addSeries({
+                            type: "spline",
+                            name: name,
+                            data: data,
+                            id: "name2"
+                        });
+                    }
                 }
             }
         });
-    });
-
-    $("#name").on("input", function () {
-        $("#name").removeClass("wronginput");
-    });
+    };
 });

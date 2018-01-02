@@ -8,7 +8,7 @@ names_ignore = ["SOUČET", "NEZJIŠTĚNO", "NEUVEDENO", "NEURČENO"]
 with open('data.csv') as file:
 	reader = csv.DictReader(file)
 	for row in reader:
-		if int(row["3000"]) > 5 and row["JMÉNO"] not in names_ignore:
+		if int(row["3000"]) > 5 and row["JMÉNO"] not in names_ignore and " " not in row["JMÉNO"]:
 			single_names.append('"' + row["JMÉNO"].title() + '",')
 
 with open('nametest.csv', 'w') as file:
