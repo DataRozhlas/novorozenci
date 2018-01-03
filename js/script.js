@@ -114,7 +114,7 @@ $( function () {
         if ($("#name2").val() === "" || $("#name2").val() === " ") {
             try {
                 appchart.get("name2").remove();
-            } catch {}
+            } catch(err) {}
         }
     });
     $("#name2").on("input", function () {
