@@ -92,6 +92,10 @@ $( function () {
         }, 500);
     });
 
+    $(".ui-menu").on("touchstart", function() {
+        $(".ui-menu").hide();
+    });
+
     // choosing name 2
     var shownName2;
     $(".ui-menu").click(function () {
