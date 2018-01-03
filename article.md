@@ -1,11 +1,11 @@
-title: "Z Lilien je hvězda, Lída se vrací na výsluní, Ivan patří minulosti. A jak staré je vaše jméno?"
+title: "Z Lilien je hvězda, Lída se vrací na výsluní, Ivan patří minulosti. A jak šlo v čase vaše jméno?"
 perex: "Podle nejčerstvějších dat mají Češi 69 537 různých křestních jmen. Jejich oblíbenost kolísá s aktuální módou i dobovými poměry. Podle jména tak lze odhadnout i to, jak je jeho nositel starý. Která jména jsou neotřelou novinkou a která patří do historie? A jak daleko máte k průměrnému nositeli svého jména vy?"
 authors: ["Michal Zlatkovský"]
 published: "3. ledna 2018"
 coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
-libraries: [jquery, "https://code.highcharts.com/highcharts.js"]
+libraries: [jquery, "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/highcharts-more.js"]
 options: ""
 ---
 
@@ -23,28 +23,33 @@ options: ""
 
 test mobilního autocomplete 
 
+<div id="uniqnames"></div>
+
 k 2016 celkem 1064 jmen se 100 a více žijícími nositeli
 - za války německá jména
 1940 Ingeborg, Irmgard
 42 Reinhold, Waltraud
 43 Gunter a Helmut, asi příprava na socík už
+Klement nejoblíbenější 1950, Adolf 1939
 Ivan pokles po 69
 Aneta 2005
-jména, které se vrací: Metoděj, Alma, Rosalie, Bruno, Lída, Vendelín, Žofie	
 
-Appka:
-- srovnání dvou jmen
+trendíky: Aneta, Angelika (pár Riban)
 
-Autocomplete: nedvojjména s výskytem 5+, bez Součet, Nezjištěno, Neurčeno, Neuvedeno
+počítáme jména s víc než 1000 nositeli:
 
-- nejvíc trendy jména (peak někdy, pak zas dolů)
-- nejvíc % (trendy jmen, nejčastějších) v poměru k celku
+Mezi známější "stará" ženská jména patří Blažena a Božena (medián 72 let) i Marie, Milada nebo Zdenka (medián 69 let).
+<div id="oldest-male"></div>
+<div id="oldest-female"></div>
 
-- graf: počet unikátních jmen
+Nejmladší:
+<div id="youngest-male"></div>
+<div id="youngest-female"></div>
 
-- subappka? nejčastější jména podle roku narození
+
+Nejstálejší jména/vrací se do módy. 
 
 
-- HOTOVO: "nejmladší" a "nejstarší" mužská a ženská jména 
+Nejpopulárnější jména:
 
-- HOTOVO: nejmenší/největší spready mezi 25:75 hodí nejvíc trendující/nejstálejší jména!
+nejčastější jména podle roku narození?

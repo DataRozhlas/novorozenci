@@ -212,7 +212,7 @@
 <header class="b-data__header">
 <div class="row-main">
 	<h1 class="b-data__title">
-		<strong>Z Lilien je hvězda, Lída se vrací na výsluní, Ivan patří minulosti. A jak staré je vaše jméno?</strong>
+		<strong>Z Lilien je hvězda, Lída se vrací na výsluní, Ivan patří minulosti. A jak šlo v čase vaše jméno?</strong>
 	</h1>
 	<p class="meta meta--lg">
 	<a href="#" class="meta__link">Michal Zlatkovský</a>
@@ -237,6 +237,7 @@
 <div class="b-data__content" id="content">
 <script src="https://unpkg.com/jquery@3.2.1"></script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 
 
 <div class="row-main row-main--narrow">
@@ -258,35 +259,27 @@
 <div id="median2info" class="medianinfo"></div>
 
 <p>test mobilního autocomplete </p>
+<div id="uniqnames"></div>
+
 <p>k 2016 celkem 1064 jmen se 100 a více žijícími nositeli
 - za války německá jména
 1940 Ingeborg, Irmgard
 42 Reinhold, Waltraud
 43 Gunter a Helmut, asi příprava na socík už
+Klement nejoblíbenější 1950, Adolf 1939
 Ivan pokles po 69
-Aneta 2005
-jména, které se vrací: Metoděj, Alma, Rosalie, Bruno, Lída, Vendelín, Žofie </p>
-<p>Appka:
-- srovnání dvou jmen</p>
-<p>Autocomplete: nedvojjména s výskytem 5+, bez Součet, Nezjištěno, Neurčeno, Neuvedeno</p>
-<ul>
-<li>nejvíc trendy jména (peak někdy, pak zas dolů)</li>
-<li>
-<p>nejvíc % (trendy jmen, nejčastějších) v poměru k celku</p>
-</li>
-<li>
-<p>graf: počet unikátních jmen</p>
-</li>
-<li>
-<p>subappka? nejčastější jména podle roku narození</p>
-</li>
-<li>
-<p>HOTOVO: "nejmladší" a "nejstarší" mužská a ženská jména </p>
-</li>
-<li>
-<p>HOTOVO: nejmenší/největší spready mezi 25:75 hodí nejvíc trendující/nejstálejší jména!</p>
-</li>
-</ul>
+Aneta 2005</p>
+<p>trendíky: Aneta, Angelika (pár Riban)</p>
+<p>počítáme jména s víc než 1000 nositeli:</p>
+<p>Mezi známější "stará" ženská jména patří Blažena a Božena (medián 72 let) i Marie, Milada nebo Zdenka (medián 69 let).
+<div id="oldest-male"></div>
+<div id="oldest-female"></div></p>
+<p>Nejmladší:
+<div id="youngest-male"></div>
+<div id="youngest-female"></div></p>
+<p>Nejstálejší jména/vrací se do módy. </p>
+<p>Nejpopulárnější jména:</p>
+<p>nejčastější jména podle roku narození?</p>
 
 <p class="meta meta--right meta--big">
 <strong><a href="#" class="meta__link">Michal Zlatkovský</a></strong>
@@ -297,13 +290,14 @@ jména, které se vrací: Metoděj, Alma, Rosalie, Bruno, Lída, Vendelín, Žof
 </article>
 </div>
 </div>
-</div><script>"use strict";$(function(){$(".nameac").click(function(){$(this).val("");});$(".nameac").autocomplete({source:availableTags,minLength:2});$.ui.autocomplete.filter=function(array,term){return $.grep(array,function(value){return value.toLowerCase().startsWith(term.toLowerCase());});};$("#name1").val("Vojtěch");$("#name2").val("");loadNameData("Vojtěch",1);var shownName1;$(".ui-menu").click(function(){if(shownName1!=$("#name1").val()){loadNameData($("#name1").val(),1);}});var timeoutID1=0;$("#name1").on("input",function(){window.clearTimeout(timeoutID1);timeoutID1=window.setTimeout(function(){loadNameData($("#name1").val(),1);},500);});var shownName2;$(".ui-menu").click(function(){if(shownName2!=$("#name2").val()){loadNameData($("#name2").val(),2);}});var timeoutID2=0;$("#name2").on("input",function(){window.clearTimeout(timeoutID2);timeoutID2=window.setTimeout(function(){loadNameData($("#name2").val(),2);},500);});var years=[];for(var year=1916;year<=2016;year++){years.push(year);};var appchart=Highcharts.chart("appchart",{chart:{height:300},title:{text:null},tooltip:{shared:true},xAxis:{crosshair:true},credits:{enabled:false},xAxis:{categories:years},yAxis:{min:0,title:{text:"Počet narozených"}},plotOptions:{column:{pointPadding:0.1,borderWidth:0,events:{legendItemClick:function(){return false;}}}}});function loadNameData(name,series){if(name==""){return}
+</div><script>"use strict";$(function(){$(".nameac").click(function(){$(this).val("");});$(".nameac").autocomplete({source:availableTags,minLength:2});$.ui.autocomplete.filter=function(array,term){return $.grep(array,function(value){return value.toLowerCase().startsWith(term.toLowerCase());});};var years=[];for(var year=1916;year<=2016;year++){years.push(year);};var appchart=Highcharts.chart("appchart",{chart:{height:300},title:{text:null},tooltip:{shared:true},xAxis:{crosshair:true,categories:years},credits:{enabled:false},yAxis:{min:0,title:{text:"Počet narozených"},labels:{format:'{value}'}},plotOptions:{column:{pointPadding:0.1,borderWidth:0,events:{legendItemClick:function(){return false;}}}}});$("#name1").val("Vojtěch");$("#name2").val("Natálie");loadNameData("Vojtěch",1,true);var shownName1;$(".ui-menu").click(function(){if(shownName1!=$("#name1").val()){loadNameData($("#name1").val(),1);}});$("#name1").on("keydown",function(event){if(event.which===13&shownName1!=$("#name1").val()){loadNameData($("#name1").val(),1);}});var timeoutID1=0;$("#name1").on("input",function(){window.clearTimeout(timeoutID1);timeoutID1=window.setTimeout(function(){if(shownName1!=$("#name1").val()){loadNameData($("#name1").val(),1);}},500);});var shownName2;$(".ui-menu").click(function(){if(shownName2!=$("#name2").val()){loadNameData($("#name2").val(),2);}});$("#name2").on("keydown",function(event){if(event.which===13&shownName2!=$("#name2").val()){loadNameData($("#name2").val(),2);}});var timeoutID2=0;$("#name2").on("keyup",function(){if($("#name2").val()===""||$("#name2").val()===" "){try{appchart.get("name2").remove();}catch{}}});$("#name2").on("input",function(){window.clearTimeout(timeoutID2);timeoutID2=window.setTimeout(function(){if(shownName2!=$("#name2").val()){loadNameData($("#name2").val(),2);}},500);});function loadNameData(name,series,init=false){if(name===""){return}
 name=name.replace(/\w\S*/g,function(txt){return txt.charAt(0).toUpperCase()+txt.substr(1).toLowerCase();});if(series===1){shownName1=name;var boxid="#name1"}else if(series===2){shownName2=name;var boxid="#name2"}
-$.ajax({url:"https://5mw39ochkf.execute-api.eu-central-1.amazonaws.com/prod/novorozenci",type:"POST",contentType:"application/json",data:JSON.stringify({"name":name.toUpperCase()}),dataType:"json",success:function success(response){if(response["Items"].length===0){$(boxid).addClass("wronginput");}else{$(boxid).removeClass("wronginput");var data=[];var median_array=[];years.forEach(function(year){data.push(response["Items"][0][year]);for(var i=response["Items"][0][year];i>0;i--){median_array.push(year)};});if(series===1){$("#median1info").text("V roce 2016 žilo v Česku "+median_array.length+" nositelů jména "+name
+$.ajax({url:"https://5mw39ochkf.execute-api.eu-central-1.amazonaws.com/prod/novorozenci",type:"POST",contentType:"application/json",data:JSON.stringify({"name":name.toUpperCase()}),dataType:"json",success:function success(response){if(init===true){loadNameData("Natálie",2);}
+if(response["Items"].length===0){$(boxid).addClass("wronginput");}else{$(boxid).removeClass("wronginput");var data=[];var median_array=[];years.forEach(function(year){data.push(response["Items"][0][year]);for(var i=response["Items"][0][year];i>0;i--){median_array.push(year)};});if(series===1){$("#median1info").text("V roce 2016 žilo v Česku "+median_array.length+" nositelů jména "+name
 +". Medián jejich let narození je "+median_array[Math.round(median_array.length/2)-1]+".");if(appchart.series.length!=0){appchart.get("name1").remove();}
 appchart.addSeries({type:"column",name:name,data:data,id:"name1"});}else if(series===2){$("#median2info").text("V roce 2016 žilo v Česku "+median_array.length+" nositelů jména "+name
 +". Medián jejich let narození je "+median_array[Math.round(median_array.length/2)-1]+".");if(appchart.series.length===2){appchart.get("name2").remove();}
-appchart.addSeries({type:"spline",name:name,data:data,id:"name2"});}}}});};});/*! jQuery UI - v1.12.1 - 2018-01-02
+appchart.addSeries({type:"spline",name:name,data:data,id:"name2"});}}}});};Highcharts.chart("uniqnames",{chart:{height:400},colors:["#2b908f"],title:{text:"Jedinečná jména podle roku narození"},xAxis:{crosshair:true,categories:years},credits:{enabled:false},legend:{enabled:false},yAxis:{min:0,title:{text:"Počet narozených"},labels:{format:'{value}'}},series:[{type:"area",name:"Jedinečná jména",data:[86,132,141,223,269,366,435,537,605,650,730,782,888,953,1038,1081,1128,1177,1227,1267,1290,1334,1420,1440,1569,1585,1602,1687,1739,1669,1746,1684,1715,1734,1677,1696,1726,1670,1671,1641,1632,1637,1566,1548,1568,1575,1624,1680,1739,1742,1737,1669,1771,1792,1826,1839,1867,1803,1903,1896,1831,1778,1756,1744,1712,1654,1616,1559,1604,1640,1636,1701,1647,1786,1808,1988,2260,2263,2289,2300,2288,2343,2341,2190,2474,3500,3804,4026,4278,4647,5280,5578,6303,6434,6320,6159,6231,6219,6157,6198,5558]}],plotOptions:{area:{animation:false}}});Highcharts.chart('oldest-female',{chart:{inverted:true,height:600},colors:["#f45b5b","#434348"],credits:{enabled:false},title:{text:'"Nejstarší" jména - ženy'},subtitle:{text:'Jména s nejvyšším mediánem věku'},tooltip:{shared:true},yAxis:{title:{text:'Věk'}},tooltip:{enabled:false},plotOptions:{series:{animation:false}},xAxis:{categories:["Aloisie","Alenka","Danuška","Gertruda","Josefa","Františka","Helga","Miluška","Emilie","Jaruška","Lidmila","Bedřiška","Blažena","Božena","Krista","Růžena","Věnceslava","Ivanka","Anděla","Květoslava","Maria","Marie","Milada","Vlastimila","Zdenka"],reversed:true,labels:{style:{fontSize:'15px'}}},series:[{type:'columnrange',name:'Rozpětí (25. - 75. percentil)',data:[[73,86],[71,83],[70,83],[74,84],[68,84],[66,83],[67,78],[69,83],[65,81],[68,83],[66,80],[63,81],[64,81],[64,81],[61,76],[61,80],[65,79],[67,73],[50,81],[60,78],[55,78],[59,77],[60,78],[62,79],[59,78]]},{type:'scatter',name:'Medián',data:[80,77,77,77,76,75,75,74,73,73,73,72,72,72,71,71,71,70,69,69,69,69,69,69,69],marker:{symbol:"diamond"}}]});Highcharts.chart('oldest-male',{chart:{inverted:true,height:600},colors:["#8085e9","#434348"],credits:{enabled:false},title:{text:'"Nejstarší" jména - muži'},subtitle:{text:'Jména s nejvyšším mediánem věku'},tooltip:{shared:true},yAxis:{title:{text:'Věk'}},tooltip:{enabled:false},plotOptions:{series:{animation:false}},xAxis:{categories:["Adolf","Alois","Leopold","Emanuel","Erich","Bohumír","Bohumil","Ferdinand","Bedřich","Bohuslav","Arnošt","Bořivoj","Emil","František","Ján","Ludvík","Oldřich","Otto","Anton","Josef","Jozef","Karol","Miloslav","Otakar","Rudolf"],reversed:true,labels:{style:{fontSize:'15px'}}},series:[{type:'columnrange',name:'Rozpětí (25. - 75. percentil)',data:[[61,79],[58,76],[59,77],[53,75],[54,77],[55,74],[53,73],[47,76],[51,73],[53,72],[49,74],[47,71],[49,73],[46,72],[52,72],[49,73],[48,71],[48,75],[50,72],[45,71],[52,71],[51,72],[50,71],[45,71],[47,72],]},{type:'scatter',name:'Medián',data:[73,68,68,67,67,66,65,65,64,64,63,63,63,63,63,63,63,63,62,62,62,62,62,62,62],marker:{symbol:"diamond"}}]});Highcharts.chart('youngest-female',{chart:{inverted:true,height:600},colors:["#f45b5b","#434348"],credits:{enabled:false},title:{text:'"Nejmladší" jména - ženy'},subtitle:{text:'Jména s nejnižším mediánem věku'},tooltip:{shared:true},yAxis:{title:{text:'Věk'}},tooltip:{enabled:false},plotOptions:{series:{animation:false}},xAxis:{categories:["Ella","Mia","Emma","Leontýna","Liliana","Sofie","Stela","Stella","Amálie","Ela","Elen","Ema","Izabela","Josefína","Justýna","Laura","Nella","Rozálie","Ellen","Sofia","Vanesa","Viktorie","Agáta","Klaudie","Nela"],reversed:true,labels:{style:{fontSize:'15px'}}},series:[{type:'columnrange',name:'Rozpětí (25. - 75. percentil)',data:[[2,7],[2,7],[2,9],[3,9],[3,10],[3,7],[2,8],[2,8],[3,9],[3,9],[3,9],[3,10],[3,13],[3,12],[3,9],[3,9],[3,9],[2,10],[3,12],[3,11],[4,11],[3,12],[4,13],[4,14],[5,13]]},{type:'scatter',name:'Medián',data:[4,4,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,7,7,7,7,8,8,8],marker:{symbol:"diamond"}}]});Highcharts.chart('youngest-male',{chart:{inverted:true,height:600},colors:["#8085e9","#434348"],credits:{enabled:false},title:{text:'"Nejmladší" jména - muži'},subtitle:{text:'Jména s nejnižším mediánem věku'},tooltip:{shared:true},yAxis:{title:{text:'Věk'}},tooltip:{enabled:false},plotOptions:{series:{animation:false}},xAxis:{categories:["Eliáš","Damián","Teodor","Tobias","Tobiáš","Max","Maxmilián","Oliver","Sebastian","Sebastián","Alex","Jáchym","Matyáš","Maxim","Mikuláš","Samuel","Vincent","Jonáš","Nicolas","Šimon","Vítek","Hugo","Kristián","Kryštof","Nikolas"],reversed:true,labels:{style:{fontSize:'15px'}}},series:[{type:'columnrange',name:'Rozpětí (25. - 75. percentil)',data:[[2,7],[3,10],[2,11],[3,8],[3,8],[3,9],[3,12],[3,10],[3,10],[3,10],[3,12],[3,11],[4,10],[4,11],[3,17],[4,11],[3,35],[4,13],[5,14],[4,13],[4,13],[4,43],[4,15],[4,15],[5,16]]},{type:'scatter',name:'Medián',data:[4,5,5,5,5,6,6,6,6,6,7,7,7,7,7,7,7,8,8,8,8,9,9,9,9],marker:{symbol:"diamond"}}]});});/*! jQuery UI - v1.12.1 - 2018-01-02
 * http://jqueryui.com
 * Includes: widget.js, position.js, keycode.js, unique-id.js, widgets/autocomplete.js, widgets/menu.js
 * Copyright jQuery Foundation and other contributors; Licensed MIT */
