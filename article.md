@@ -6,7 +6,7 @@ coverimg: https://interaktivni.rozhlas.cz/brexit/media/cover.jpg
 coverimg_note: "Foto <a href='#'>ČTK</a>"
 styles: []
 libraries: [jquery, "https://code.highcharts.com/highcharts.js", "https://code.highcharts.com/highcharts-more.js"]
-options: ""
+options: "noheader, nopic"
 ---
 
 Koho si představíte pod jmény Marie, Ludmila, Alois nebo Leopold? Nejspíš zástupce dnešní generace dědečků a babiček, dost možná i praprarodičů. Natálie, Dominik, Sebastian nebo Emma jsou oproti tomu jména jako vystřižená z prostředí dnešních základních a středních škol. A zatímco jste na českém území mohli za druhé světové války narazit na novorozence jménem Ingeborg nebo Waltraud, dnes v porodnicích uvidíte spíše Isabelly, Vivien nebo Christiany.
@@ -31,24 +31,27 @@ Zásadní trend se ovšem týká až poslední doby: kreativita rodičů v pojme
 
 <div id="uniqnames"></div>
 
-Patrné je to na "nejmladších" ženských jménech, tedy těch, jejichž nositelky jsou v průměru osmileté a mladší.  Stejně jako u všech následujících údajů jsme vybrali jména s více než 1000 nositeli.
+Patrné je to na "nejmladších" ženských jménech, tedy těch, jejichž nositelky jsou v průměru osmileté a mladší. Nejvíce bodují krátká jména jako Ella, Mia nebo Stela. (Stejně jako u všech následujících údajů jsme vybrali jména s více než 1000 nositeli.)
 <div id="youngest-female"></div>
-počítáme jména s víc než 1000 nositeli:
 
-Mezi známější "stará" ženská jména patří Blažena a Božena (medián 72 let) i Marie, Milada nebo Zdenka (medián 69 let).
-<div id="oldest-male"></div>
+Mezi "nejstarší" ženská jména patří naopak třeba Květoslava nebo Růžena. Najdeme mezi nimi tvary dnes vnímané zdrobněle, například u Danušky, Milušky nebo Alenky. Mezi dodnes dobře známá jména patří Božena, Milada nebo Marie, která je ještě dnes pátým nejčastějším jménem.
+
 <div id="oldest-female"></div>
 
-Nejmladší:
+U nově narozených chlapců lze pozorovat trend návratu ke starším jménům, který se v menší míře ukazuje i u dívek. Jména jako Vincenc nebo Hugo dostávaly děti už ve čtyřicátých letech minulého století. Další jména jako Matyáš, Mikuláš nebo Kryštof odkazují na ještě starší historické užívání, byť se v minulém století až do devadesátých let objevovala jen velmi vzácně.
+
 <div id="youngest-male"></div>
 
+Jména, která lze u mužů zařadit mezi "nejstarší", dnes návrat popularity ještě nezažívají. Čerstvě narozených Leopoldů, Emanuelů nebo Bedřichů najdeme minimum. Oproti ženským jménům však měla jejich obliba většinou delšího trvání. 
 
+<div id="oldest-male"></div>
 
-Nejstálejší jména/vrací se do módy.  uuu
+Z dat je ale návrat některých jmen na výsluní patrný. Ukáže se na časovém rozpětí jeho používání - pokud je mezi jeho nositeli na okrajích věkového rozložení dostatečně velká mezera, naznačuje to, že se jméno vrací do módy. Žofie, Anežka, Alžběta i Bruno jsou jména, která byla před současnou vlnou nejpoužívanější v třicátých a čtyřicátých letech.
+
 <div id="evergreen"></div>
 
+Už z věkového rozložení populace je patrné, že v žebříčku celkově nejčetnějších českých jmen budou převažovat zástupci starších generací. Více než polovina jmen v žebříčku patří převážně lidem nad padesát a medián u Věry a Marie je dokonce 65 let. "Mladší" jména s mediánem věku pod třicet let patří jen Kateřinám, Jakubům a Luciím.
 
-Nejpopulárnější jména:
 <div id="popular"></div>
 
-Data MVČR. Inspirováno [FiveThirtyEight](https://fivethirtyeight.com/features/how-to-tell-someones-age-when-all-you-know-is-her-name/).
+<i>Článek vychází ze zpracování amerických dat o jménech webem [FiveThirtyEight](https://fivethirtyeight.com/features/how-to-tell-someones-age-when-all-you-know-is-her-name/).</i>
