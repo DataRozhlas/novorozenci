@@ -63,7 +63,7 @@ $( function () {
                     });
 
     $("#name1").val("Jiří");
-    $("#name2").val("");
+    $("#name2").val("Jan");
     loadNameData("Jiří", 1, true);
 
     // choosing name 1 - two options
@@ -90,10 +90,6 @@ $( function () {
                 loadNameData($("#name1").val(), 1);
             }
         }, 500);
-    });
-
-    $(".ui-menu").on("touchstart", function() {
-        $(".ui-menu").hide();
     });
 
     // choosing name 2
@@ -150,6 +146,9 @@ $( function () {
             data: JSON.stringify({"name": name.toUpperCase()}),
             dataType: "json",
             success: function success(response) {
+                if (init === true) {
+                    loadNameData("Jan", 2)
+                }
                 if (response["Items"].length === 0) {
                     $(boxid).addClass("wronginput");
                 } else {
@@ -253,9 +252,6 @@ $( function () {
         subtitle: {
             text: 'Jména s nejvyšším mediánem věku'
         },
-        tooltip: {
-            shared: true
-        },
         yAxis: {
             title: {
                 text: 'Věk'
@@ -266,7 +262,10 @@ $( function () {
         },
         plotOptions: {
             series: {
-                animation: false
+                animation: false,
+                dataLabels: {
+                    allowOverlap: true
+                }
             }
         },
         xAxis: {
@@ -339,9 +338,6 @@ $( function () {
         subtitle: {
             text: 'Jména s nejvyšším mediánem věku'
         },
-        tooltip: {
-            shared: true
-        },
         yAxis: {
             title: {
                 text: 'Věk'
@@ -352,7 +348,10 @@ $( function () {
         },
         plotOptions: {
             series: {
-                animation: false
+                animation: false,
+                dataLabels: {
+                    allowOverlap: true
+                }
             }
         },
         xAxis: {
@@ -427,9 +426,6 @@ $( function () {
         subtitle: {
             text: 'Jména s nejnižším mediánem věku'
         },
-        tooltip: {
-            shared: true
-        },
         yAxis: {
             title: {
                 text: 'Věk'
@@ -440,7 +436,10 @@ $( function () {
         },
         plotOptions: {
             series: {
-                animation: false
+                animation: false,
+                dataLabels: {
+                    allowOverlap: true
+                }
             }
         },
         xAxis: {
@@ -515,9 +514,6 @@ $( function () {
         subtitle: {
             text: 'Jména s nejnižším mediánem věku'
         },
-        tooltip: {
-            shared: true
-        },
         yAxis: {
             title: {
                 text: 'Věk'
@@ -528,7 +524,10 @@ $( function () {
         },
         plotOptions: {
             series: {
-                animation: false
+                animation: false,
+                dataLabels: {
+                    allowOverlap: true
+                }
             }
         },
         xAxis: {
@@ -589,5 +588,172 @@ $( function () {
 
     });
 
-    //next one here
+    Highcharts.chart('evergreen', {
+        chart: {
+            inverted: true,
+            height: 600
+        },
+        colors: ["#2b908f", "#434348"],
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'Stálice mezi jmény'
+        },
+        subtitle: {
+            text: 'Jména s největším věkovým rozpětím'
+        },
+        yAxis: {
+            title: {
+                text: 'Věk'
+            }
+        },
+        tooltip: {
+            enabled: false
+        },
+        plotOptions: {
+            series: {
+                animation: false,
+                dataLabels: {
+                    allowOverlap: true
+                }
+            }
+        },
+        xAxis: {
+                    categories: ["Žofie", "Anežka", "Bruno", "Alžběta", "Hubert", "Emílie", "Anastázie", "Anna", "Vilém", "Elena", "Vanda", "Oskar", "Alexander", "Cyril", "Čeněk", "Valentina", "Magdalena", "Andrej", "Lea", "Alexandr", "Kristina", "Hugo", "Gabriel", "Tamara", "Zora"],
+                    reversed: true,
+                    labels: {
+                        style: {
+                            fontSize:'15px'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'columnrange',
+                    name: 'Rozpětí (25. - 75. percentil)',
+                    data: [
+                        [9, 82], //Žofie 66
+                        [9, 75], //Anežka 34
+                        [5, 65], //Bruno 15
+                        [11, 67], //Alžběta 28
+                        [13, 68], //Hubert 52
+                        [3, 57], //Emílie 9
+                        [5, 58], //Anastázie 11
+                        [21, 73], //Anna 62
+                        [14, 66], //Vilém 45
+                        [5, 56], //Elena 18
+                        [17, 66], //Vanda 43
+                        [6, 54], //Oskar 18
+                        [18, 65], //Alexander 50
+                        [23, 70], //Cyril 52
+                        [20, 65], //Čeněk 44
+                        [8, 53], //Valentina 15
+                        [19, 63], //Magdalena 43
+                        [16, 58], //Andrej 38
+                        [6, 48], //Lea 23
+                        [10, 50], //Alexandr 29
+                        [22, 62], //Kristina 38
+                        [4, 43], //Hugo 9
+                        [7, 45], //Gabriel 18
+                        [17, 55], //Tamara 40
+                        [27, 65], //Zora 53
+                    ]
+                },
+                {
+                    type: 'scatter',
+                    name: 'Medián',
+                    data: [66, 34, 15, 28, 52, 9, 11, 62, 45, 18, 43, 18, 50, 52, 44, 15, 43, 38, 23, 29, 38, 9, 18, 40, 53],
+                    marker: {
+                        symbol: "diamond"
+                    }
+                }]
+
+    });
+
+    Highcharts.chart('popular', {
+        chart: {
+            inverted: true,
+            height: 600
+        },
+        colors: ["#e4d354", "#434348"],
+        credits: {
+            enabled: false
+        },
+        title: {
+            text: 'Nejpopulárnější jména'
+        },
+        subtitle: {
+            text: 'a mediánový věk jejich nositelů'
+        },
+        tooltip: {
+            shared: true
+        },
+        yAxis: {
+            title: {
+                text: 'Věk'
+            }
+        },
+        plotOptions: {
+            series: {
+                animation: false,
+                dataLabels: {
+                    allowOverlap: true
+                }
+            },
+            scatter: {
+                tooltip: {
+                    pointFormat: "<b>{point.y} let</b>"
+                }
+            }
+        },
+        xAxis: {
+                    categories: ["Jiří", "Jan", "Petr", "Jana", "Marie", "Josef", "Pavel", "Martin", "Tomáš", "Jaroslav", "Eva", "Miroslav", "Hana", "Anna", "Zdeněk", "Václav", "Michal", "František", "Lenka", "Kateřina", "Lucie", "Jakub", "Milan", "Věra", "Alena"],
+                    reversed: true,
+                    labels: {
+                        style: {
+                            fontSize:'15px'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'columnrange',
+                    name: 'Rozpětí (25. - 75. percentil)',
+                    data: [
+                        [37, 64], //Jiří 51
+                        [24, 58], //Jan 37
+                        [32, 52], //Petr 43
+                        [38, 63], //Jana 50
+                        [59, 77], //Marie 69
+                        [45, 71], //Josef 62
+                        [36, 57], //Pavel 46
+                        [24, 43], //Martin 34
+                        [19, 40], //Tomáš 30
+                        [43, 68], //Jaroslav 58
+                        [40, 67], //Eva 55
+                        [41, 65], //Miroslav 54
+                        [39, 64], //Hana 53
+                        [21, 73], //Anna 62
+                        [42, 66], //Zdeněk 56
+                        [36, 69], //Václav 56
+                        [23, 40], //Michal 32
+                        [46, 72], //František 63
+                        [33, 49], //Lenka 41
+                        [19, 38], //Kateřina 29
+                        [20, 35], //Lucie 29
+                        [9, 27], //Jakub 19
+                        [41, 62], //Milan 53
+                        [54, 74], //Věra 65
+                        [44, 66], //Alena 58
+                    ]
+                },
+                {
+                    type: 'scatter',
+                    name: 'Medián',
+                    data: [51, 37, 43, 50, 69, 62, 46, 34, 30, 58, 55, 54, 53, 62, 56, 56, 32, 63, 41, 29, 29, 19, 53, 65, 58],
+                    marker: {
+                        symbol: "diamond"
+                    }
+                }]
+
+    });
 });
