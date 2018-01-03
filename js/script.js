@@ -62,9 +62,9 @@ $( function () {
                         }
                     });
 
-    $("#name1").val("Vojtěch");
-    $("#name2").val("Natálie");
-    loadNameData("Vojtěch", 1, true);
+    $("#name1").val("Jiří");
+    $("#name2").val("");
+    loadNameData("Jiří", 1, true);
 
     // choosing name 1 - two options
     var shownName1;
@@ -74,8 +74,11 @@ $( function () {
         }
     });
     $("#name1").on("keydown", function (event) {
-        if (event.which === 13 & shownName1 != $("#name1").val()) {
-            loadNameData($("#name1").val(), 1);
+        if (event.which === 13) {
+            $(".ui-menu").hide();
+            if (shownName1 != $("#name1").val()) {
+                loadNameData($("#name1").val(), 1);
+            }
         }
     });
 
@@ -97,8 +100,11 @@ $( function () {
         }
     });
     $("#name2").on("keydown", function (event) {
-        if (event.which === 13 & shownName2 != $("#name2").val()) {
-            loadNameData($("#name2").val(), 2);
+        if (event.which === 13) {
+            $(".ui-menu").hide();
+            if (shownName2 != $("#name2").val()) {
+                loadNameData($("#name2").val(), 2);
+            }
         }
     });
 
@@ -140,10 +146,6 @@ $( function () {
             data: JSON.stringify({"name": name.toUpperCase()}),
             dataType: "json",
             success: function success(response) {
-                if (init === true) {
-                    loadNameData("Natálie", 2);
-                }
-
                 if (response["Items"].length === 0) {
                     $(boxid).addClass("wronginput");
                 } else {
