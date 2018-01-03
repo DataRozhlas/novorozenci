@@ -1,6 +1,11 @@
 /*jslint browser: true*/
 /*global $ availableTags console */
 "use strict";
+
+function niceNum(val) { //https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+};
+
 $( function () {
     $(".nameac").click(function() {
         $(this).val("");
@@ -162,7 +167,7 @@ $( function () {
                         };
                     });
                     if (series === 1) {
-                        $("#median1info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name
+                        $("#median1info").text("V roce 2016 žilo v Česku " + niceNum(median_array.length) + " nositelů jména " + name
                             + ". Medián jejich let narození je " + median_array[Math.round(median_array.length/2)-1] + ".");
                         
                         if (appchart.series.length != 0) {
@@ -177,7 +182,7 @@ $( function () {
                         });
 
                     } else if (series === 2) {
-                        $("#median2info").text("V roce 2016 žilo v Česku " + median_array.length + " nositelů jména " + name
+                        $("#median2info").text("V roce 2016 žilo v Česku " + niceNum(median_array.length) + " nositelů jména " + name
                             + ". Medián jejich let narození je " + median_array[Math.round(median_array.length/2)-1] + ".");
 
                         if (appchart.series.length === 2) {
