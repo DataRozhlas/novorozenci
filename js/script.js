@@ -275,7 +275,7 @@ $( function () {
             reversed: true,
             labels: {
                 style: {
-                    fontSize:'15px'
+                    fontSize:'13px'
                 }
             }
         },
@@ -362,7 +362,7 @@ $( function () {
                     reversed: true,
                     labels: {
                         style: {
-                            fontSize:'15px'
+                            fontSize:'13px'
                         }
                     }
                 },
@@ -449,7 +449,7 @@ $( function () {
             reversed: true,
             labels: {
                 style: {
-                    fontSize:'15px'
+                    fontSize:'13px'
                 }
             }
         },
@@ -538,7 +538,7 @@ $( function () {
                     reversed: true,
                     labels: {
                         style: {
-                            fontSize:'15px'
+                            fontSize:'13px'
                         }
                     }
                 },
@@ -624,7 +624,7 @@ $( function () {
                     reversed: true,
                     labels: {
                         style: {
-                            fontSize:'15px'
+                            fontSize:'13px'
                         }
                     }
                 },
@@ -711,7 +711,7 @@ $( function () {
                     reversed: true,
                     labels: {
                         style: {
-                            fontSize:'15px'
+                            fontSize:'13px'
                         }
                     }
                 },
